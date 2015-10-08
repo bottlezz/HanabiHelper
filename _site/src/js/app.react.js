@@ -12,6 +12,7 @@ var HanabiHelper = React.createClass({
       numOfCards:4,
       cards:[],
       selected:new Set()
+
     };
   },
   setCardNum : function(val){
