@@ -1,19 +1,20 @@
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var notify = require('gulp-notify');
+var streamify = require('gulp-streamify');
+var htmlreplace = require('gulp-html-replace');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
-var streamify = require('gulp-streamify');
 var babelify = require('babelify');
-var uglify = require('gulp-uglify');
-var notify = require('gulp-notify');
 
 var path = {
   HTML: 'src/index.html',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   DEST: 'dist',
-  DEST_BUILD: 'dist/build',
+  DEST_BUILD: './',
   DEST_SRC: 'dist/src',
   ENTRY_POINT: './src/js/app.react.js'
 };
@@ -30,6 +31,7 @@ gulp.task('copy', function(){
   gulp.src(path.HTML)
     .pipe(gulp.dest(path.DEST));
 });
+
 
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copy']);
@@ -54,5 +56,21 @@ gulp.task('watch', function() {
     .pipe(gulp.dest(path.DEST_SRC));
 });
 
+gulp.task('build', function(){
+
+  gulp.src('dist/src/build.js')
+    .pipe(gulp.dest(path.DEST_BUILD+"/prodBuild"));
+});
+
+gulp.task('replaceHTML', function(){
+  gulp.src(path.HTML)
+    .pipe(htmlreplace({
+      'js': 'prodBuild/build.js'
+    }))
+    .pipe(gulp.dest(path.DEST_BUILD));
+});
+
+
+gulp.task('production', ['replaceHTML', 'build']);
 
 gulp.task('default', ['watch']);
