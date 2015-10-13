@@ -14,21 +14,54 @@
 <style> 
 
 #container{
-	background: linear-gradient(#000000,#000033);
+
+	background-image:url("hanabi.jpg");
 	min-height: 100vh;
 	color:white;
+	background-repeat:no-repeat;
+  background-size:100%;
 }
 .card{
-
+  top:3vh;
 	height: 90vh;
 	border: solid 1px grey;
+	background-color:rgba(20,20,20,0.5);
+	margin:2px;
 }
 .selected{
 	border: solid 1px aqua;
 }
+.colorBox{
+	height:7vh;
+	width:7vh;
+	display:inline-block;
+	margin:2px;
+
+}
+.btn-discard{
+	 position: absolute;
+	 bottom: 0;
+	 right: 0;
+	 z-index:50;
+}
+.optionBar{
+	position:absolute;
+	bottom: 20vh;
+	height:20vh;
+	z-index:100;
+	width:95%;
+}
+.optionBar button{
+	width:8%;
+}
+button{
+	margin:2px;
+}
 </style>
 <body>
-	<div id="container" class="row"></div>
+	<div id="container" ></div>
 </body>
+<!-- build:js -->
 <script src='src/build.js'></script>
+<!-- endbuild -->
 </html>
