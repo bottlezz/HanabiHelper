@@ -1,17 +1,19 @@
 var CardData = function(){
-  this.colors= new Set(['red','blue','white','green','yellow']);
-  this.numbers= new Set([1,2,3,4,5]);
+  this.colors= ['red','blue','white','green','yellow'];
+  this.numbers= [1,2,3,4,5];
   this.setNumber = function(val){
-    this.numbers=new Set([val]);
+    this.numbers=[val];
   };
   this.setColor = function(val){
-    this.colors = new Set([val]);
+    this.colors =[val];
   };
   this.excludeColor = function (val){
-    this.colors.delete(val);
+    let i=this.colors.indexOf(val);
+    this.colors.splice(i,1);
   };
   this.excludeNumber = function (val){
-    this.numbers.delete(val);
+    let i=this.numbers.indexOf(val);
+    this.numbers.splice(i,1);
   };
 };
 module.exports = CardData;

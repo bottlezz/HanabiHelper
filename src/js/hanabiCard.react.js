@@ -9,21 +9,23 @@ var HanabiCard = React.createClass({
       css+="selected";
     }
     var numberString = "";
-
-
-    let numIt=this.props.cardData.numbers.values();
-    let colorIt=this.props.cardData.colors.values();
+    //
+    //
+    // let numIt=this.props.cardData.numbers.values();
+    // let colorIt=this.props.cardData.colors.values();
     let val;
-    while( val = numIt.next().value){
+    this.props.cardData.numbers.forEach(function(val,v2){
       numberString= numberString + val+" ";
-    }
+    });
     var colorDom=[];
     var colorBox=function(key){
+      console.log('a');
       return (<div key={key} className='colorBox' style={{backgroundColor:key}}></div>);
     };
-    while(val=colorIt.next().value){
+    this.props.cardData.colors.forEach(function(val,v2){
       colorDom.push(colorBox(val));
-    }
+    });
+    console.log(colorDom[1]);
 
 
     return (
