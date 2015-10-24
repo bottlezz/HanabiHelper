@@ -9,11 +9,17 @@ var CardData = function(){
   };
   this.excludeColor = function (val){
     let i=this.colors.indexOf(val);
-    this.colors.splice(i,1);
+    if(i!=-1){
+      this.colors.splice(i,1);
+    }
+
   };
   this.excludeNumber = function (val){
     let i=this.numbers.indexOf(val);
-    this.numbers.splice(i,1);
+    if(i!=-1){
+      this.numbers.splice(i,1);
+    }
+
   };
 };
 module.exports = CardData;
